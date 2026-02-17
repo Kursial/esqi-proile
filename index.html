@@ -2,346 +2,172 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Esqi Syamsi | Pro Profile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esqi Syamsi | Mobile Dev</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-dark: linear-gradient(135deg, #0a0e1b, #131d32);
-            --card-bg-dark: rgba(22, 33, 50, 0.6);
-            --accent-dark: #38bdf8;
-            --text-dark: #e0e6f0;
-
-            --bg-light: linear-gradient(135deg, #f0f4f8, #c1d2e0);
-            --card-bg-light: rgba(255, 255, 255, 0.7);
-            --accent-light: #0d6efd;
-            --text-light: #1a202c;
-
-            --current-bg: var(--bg-dark);
-            --current-card-bg: var(--card-bg-dark);
-            --current-accent: var(--accent-dark);
-            --current-text: var(--text-dark);
+            --bg: #020617;
+            --accent: #38bdf8;
+            --card-bg: rgba(15, 23, 42, 0.6);
         }
 
         body {
-            background: var(--current-bg);
-            color: var(--current-text);
+            background-color: var(--bg);
+            color: white;
             font-family: 'Poppins', sans-serif;
+            margin: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            margin: 0;
             overflow: hidden;
-            transition: background 0.6s ease, color 0.6s ease;
         }
 
-        /* Mode Terang */
-        body.light-mode {
-            --current-bg: var(--bg-light);
-            --current-card-bg: var(--card-bg-light);
-            --current-accent: var(--accent-light);
-            --current-text: var(--text-light);
+        /* Background Animasi Partikel */
+        .bg-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1e293b 0%, #020617 100%);
+            z-index: -1;
         }
 
-        /* Kartu Glassmorphism */
         .card {
-            background: var(--current-card-bg);
+            background: var(--card-bg);
             padding: 40px 25px;
             border-radius: 30px;
             text-align: center;
             width: 85%;
-            max-width: 380px;
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
-            animation: fadeInScale 1.2s ease-out;
-            z-index: 10;
-            position: relative;
-            transform-style: preserve-3d;
+            max-width: 340px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            transition: all 0.5s ease;
             perspective: 1000px;
         }
 
-        @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.8) translateY(20px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+        /* Efek melayang saat disentuh */
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
         }
 
-        /* Foto Profil 3D Hover */
         .profile-img {
-            width: 120px;
-            height: 120px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
-            border: 4px solid var(--current-accent);
-            padding: 4px;
+            border: 3px solid var(--accent);
+            padding: 5px;
             object-fit: cover;
-            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1.2);
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
-            transform: rotateY(0deg);
-            cursor: pointer;
-        }
-        .profile-img:hover {
-            transform: rotateY(15deg) scale(1.05);
-            box-shadow: 0 0 35px var(--current-accent);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
         }
 
-        h2 { margin: 20px 0 5px; font-weight: 700; font-size: 1.6rem; letter-spacing: 0.5px; }
+        h2 { margin: 15px 0 5px; font-size: 1.3rem; letter-spacing: 1px; }
 
-        /* Area Teks Ngetik */
         .typing-text {
-            height: 28px;
-            color: var(--current-accent);
-            margin-bottom: 35px;
-            font-size: 1.05rem;
-            font-weight: 400;
-            overflow: hidden;
-            border-right: 2px solid var(--current-accent);
-            white-space: nowrap;
-            animation: blink-caret 0.75s step-end infinite;
+            height: 20px;
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            opacity: 0.8;
         }
 
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--current-accent); }
-        }
-
-        /* Tombol Link Profesional */
         .btn-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--current-text);
-            padding: 16px 20px;
-            margin: 15px 0;
-            border-radius: 18px;
+            display: block;
+            background: rgba(255,255,255,0.03);
+            color: white;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 12px;
             text-decoration: none;
-            font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            font-size: 0.85rem;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: 0.3s;
         }
 
         .btn-link:hover {
-            background: var(--current-accent);
-            color: var(--current-bg); /* Berubah ke warna background mode saat ini */
-            transform: translateY(-7px) scale(1.02);
-            box-shadow: 0 10px 25px rgba(var(--current-accent-rgb), 0.4);
+            background: var(--accent);
+            color: #020617;
+            font-weight: 600;
+            transform: scale(1.05);
         }
 
-        /* Tombol Musik & Dark Mode */
-        .action-btn {
+        .music-btn {
             position: fixed;
-            background: var(--current-accent);
-            color: var(--current-bg);
-            width: 55px;
-            height: 55px;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent);
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
             z-index: 100;
-            font-size: 1.4rem;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-        .action-btn:hover { transform: scale(1.1); box-shadow: 0 0 25px rgba(var(--current-accent-rgb), 0.7); }
-        .action-btn:active { transform: scale(0.9); }
-
-        #music-btn { bottom: 25px; right: 25px; animation: pulse 2s infinite; }
-        #theme-toggle { top: 25px; right: 25px; background: rgba(255,255,255,0.1); color: var(--current-text); box-shadow: none; border: 1px solid rgba(255,255,255,0.2); }
-        #theme-toggle:hover { background: rgba(255,255,255,0.2); color: var(--current-text); }
-
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(56, 189, 248, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+            box-shadow: 0 0 15px var(--accent);
         }
 
-        /* Partikel Background (Canvas) */
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1; /* Di bawah kartu */
-            background: transparent;
-        }
-
-        /* Cahaya Belakang */
-        .blob {
+        /* Animasi Ornamen */
+        .orb {
             position: absolute;
-            width: 300px; height: 300px;
-            background: var(--current-accent);
-            filter: blur(100px);
-            z-index: 2;
             border-radius: 50%;
-            opacity: 0.18;
-            animation: float 10s ease-in-out infinite alternate;
-            transition: background 0.6s ease;
+            filter: blur(60px);
+            opacity: 0.2;
+            z-index: -1;
+            animation: move 10s infinite alternate;
         }
-        .blob.bottom-right { background: #818cf8; animation-delay: 1.5s; }
 
-        @keyframes float {
-            0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(30px, -40px) scale(1.05); }
-            66% { transform: translate(-20px, 20px) scale(0.95); }
-            100% { transform: translate(0px, 0px) scale(1); }
+        @keyframes move {
+            from { transform: translate(0, 0); }
+            to { transform: translate(50px, 100px); }
         }
     </style>
 </head>
 <body>
-    
-    <div id="particles-js"></div>
 
-    <div class="blob" style="top: 10%; left: 10%;"></div>
-    <div class="blob bottom-right" style="bottom: 10%; right: 10%;"></div>
+    <div class="bg-glow"></div>
+    <div class="orb" style="width: 200px; height: 200px; background: var(--accent); top: 10%; left: 5%;"></div>
+    <div class="orb" style="width: 150px; height: 150px; background: #6366f1; bottom: 15%; right: 5%;"></div>
 
     <div class="card">
-        <img src="014ce7a0d4dcdda15c570862f645bfb8.jpg" alt="Esqi Syamsi" class="profile-img">
-        <h2>Muhammad Esqi Syamsi</h2>
+        <img src="014ce7a0d4dcdda15c570862f645bfb8.jpg" alt="Esqi" class="profile-img">
+        <h2>Esqi Syamsi</h2>
         <div class="typing-text" id="ketikan"></div>
         
-        <a href="https://wa.me/6281946361344?text=Halo%20Esqi,%20saya%20tertarik%20dengan%20layanan%20koding%20Anda." class="btn-link" ontouchstart="vibrate(50)">
-            <i class="fab fa-whatsapp"></i> Tanya Jasa Koding
-        </a>
-        <a href="https://instagram.com/eskiikuu" class="btn-link" ontouchstart="vibrate(50)">
-            <i class="fab fa-instagram"></i> Instagram Profile
-        </a>
-        <a href="https://github.com/kursial" class="btn-link" ontouchstart="vibrate(50)">
-            <i class="fab fa-github"></i> Lihat Projek GitHub
-        </a>
+        <a href="https://wa.me/6281946361344" class="btn-link">🚀 Request Project</a>
+        <a href="https://instagram.com/eskiikuu" class="btn-link">📸 Instagram</a>
+        <a href="https://github.com/kursial" class="btn-link">📂 My GitHub</a>
+        
+        <p style="font-size: 0.6rem; margin-top: 20px; opacity: 0.4;">© 2026 Developed by Esqi</p>
     </div>
 
-    <div class="action-btn" id="music-btn" onclick="toggleMusic()">🎵</div>
-    <div class="action-btn" id="theme-toggle" onclick="toggleTheme()">☀️</div>
+    <div class="music-btn" onclick="toggleMusic()">🎵</div>
+    <audio id="audioKu" loop><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg"></audio>
 
-    <audio id="audioKu" loop preload="auto">
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
-    </audio>
-
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    
     <script>
-        // --- Global Variables ---
-        const body = document.body;
-        const myAudio = document.getElementById("audioKu");
-        const musicBtn = document.getElementById("music-btn");
-        const themeToggleBtn = document.getElementById("theme-toggle");
-
-        // --- 1. Script Efek Ngetik (Lebih Halus & Profesional) ---
-        const listTeks = ["Mobile Web Developer", "UI/UX Designer", "Creative Problem Solver"];
-        let k_idx = 0, h_idx = 0, isHapus = false;
-        const typingSpeed = 100;
-        const deletingSpeed = 60;
-        const pauseTime = 2000;
-
-        function ketikUlang() {
-            const display = document.getElementById("ketikan");
-            const kataSkrg = listTeks[k_idx];
-            
-            if (!isHapus) {
-                display.innerText = kataSkrg.substring(0, h_idx + 1);
-                h_idx++;
-                if (h_idx === kataSkrg.length) {
-                    isHapus = true;
-                    setTimeout(ketikUlang, pauseTime);
-                    return;
-                }
-            } else {
-                display.innerText = kataSkrg.substring(0, h_idx - 1);
-                h_idx--;
-                if (h_idx === 0) {
-                    isHapus = false;
-                    k_idx = (k_idx + 1) % listTeks.length;
-                }
-            }
-            const currentSpeed = isHapus ? deletingSpeed : typingSpeed;
-            setTimeout(ketikUlang, currentSpeed);
+        // Ngetik
+        const teks = ["Mobile Web Developer", "UI/UX Designer", "Always Learning"];
+        let k=0, h=0, hapus=false;
+        function ngetik(){
+            const d = document.getElementById("ketikan");
+            d.innerText = hapus ? teks[k].substring(0,h-1) : teks[k].substring(0,h+1);
+            h = hapus ? h-1 : h+1;
+            let s = hapus ? 40 : 80;
+            if(!hapus && h === teks[k].length){ s=1500; hapus=true; }
+            else if(hapus && h === 0){ hapus=false; k=(k+1)%teks.length; s=500; }
+            setTimeout(ngetik, s);
         }
 
-        // --- 2. Script Musik (Final Fix dengan Promise & Volume) ---
-        function toggleMusic() {
-            if (myAudio.paused) {
-                myAudio.volume = 0.5; // Atur volume
-                let playPromise = myAudio.play();
-
-                if (playPromise !== undefined) {
-                    playPromise.then(_ => {
-                        musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                        musicBtn.style.animation = "none";
-                        console.log("Musik Jalan!");
-                    }).catch(error => {
-                        console.error("Playback failed:", error);
-                        alert("Browser butuh izin kamu. Coba klik lagi!");
-                    });
-                }
-            } else {
-                myAudio.pause();
-                musicBtn.innerHTML = '<i class="fas fa-music"></i>';
-                musicBtn.style.animation = "pulse 2s infinite";
-            }
-            vibrate(50); // Haptic Feedback
+        // Musik
+        const a = document.getElementById("audioKu");
+        function toggleMusic(){
+            if(a.paused){ a.play(); } else { a.pause(); }
         }
-
-        // --- 3. Script Dark/Light Mode ---
-        function toggleTheme() {
-            body.classList.toggle("light-mode");
-            const isLightMode = body.classList.contains("light-mode");
-            themeToggleBtn.innerHTML = isLightMode ? '🌙' : '☀️';
-            localStorage.setItem("theme", isLightMode ? "light" : "dark"); // Simpan pilihan user
-            vibrate(50); // Haptic Feedback
-        }
-
-        // Muat tema yang terakhir disimpan
-        (function loadTheme() {
-            if (localStorage.getItem("theme") === "light") {
-                body.classList.add("light-mode");
-                themeToggleBtn.innerHTML = '🌙';
-            }
-        })();
-
-        // --- 4. Script Haptic Feedback (Getar Halus) ---
-        function vibrate(duration) {
-            if ("vibrate" in navigator && window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
-                navigator.vibrate(duration);
-            }
-        }
-
-        // --- 5. Script Particle.js (Efek Bintang-Bintang/Partikel) ---
-        particlesJS("particles-js", {
-            "particles": {
-                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#ffffff" },
-                "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 } },
-                "opacity": { "value": 0.5, "random": false, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } },
-                "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } },
-                "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 },
-                "move": { "enable": true, "speed": 3, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
-                "modes": {
-                    "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
-                    "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 },
-                    "repulse": { "distance": 200, "duration": 0.4 },
-                    "push": { "particles_nb": 4 },
-                    "remove": { "particles_nb": 2 }
-                }
-            },
-            "retina_detect": true
-        });
-
-        // Jalankan script saat halaman dimuat
-        window.onload = ketikUlang;
+        window.onload = ngetik;
     </script>
 </body>
 </html>
