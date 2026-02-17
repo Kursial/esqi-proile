@@ -6,48 +6,67 @@
     initial-scale=1.0">
     <title>My Bio Link</title>
     <style>
-      body {
-        background-color: 
-        #0f172a;
+    body {
+        background: linear-gradient(135deg, #0f172a, #1e293b);
         color: white;
-        font-family: Arial,
-        sans-serif;
+        font-family: 'Segoe UI', Arial, sans-serif;
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
         padding: 20px;
-      }
-      .card {
-        background: #1e293b;
-        padding: 20px;
-        border-radius: 15px;
+    }
+    .card {
+        background: rgba(30, 41, 59, 0.8);
+        padding: 30px;
+        border-radius: 20px;
         text-align: center;
-        width= 100%;
-        max-width: 300px;
-        box-shadow: 0 10px 15px
-        rgba(0,0,0,0,3);
-      }
-      img {
-        width: 100px;
-        height: 100px;
+        width: 100%;
+        max-width: 320px;
+        box-shadow: 0 20px 25px rgba(0,0,0,0.5);
+        backdrop-filter: blur(10px); /* Bikin efek kaca transparan */
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+    img {
+        width: 120px;
+        height: 120px;
         border-radius: 50%;
-        border: 3px solid 
-        #38bdf8
-      }
-      .btn-link {
+        border: 4px solid #38bdf8;
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+        transition: 0.3s;
+        object-fit: cover; /* Biar foto lu gak penyet */
+    }
+    img:hover {
+        transform: scale(1.1) rotate(5deg); /* Foto nge-zoom & miring dikit pas disentuh */
+    }
+    h2 {
+        margin: 15px 0 5px;
+        font-size: 1.5rem;
+    }
+    p {
+        color: #94a3b8;
+        margin-bottom: 25px;
+    }
+    .btn-link {
         display: block;
         background: #38bdf8;
         color: #0f172a;
-        padding: 12px;
-        margin: 10px 0;
-        border-radius: 8px;
+        padding: 14px;
+        margin: 12px 0;
+        border-radius: 50px;
         text-decoration: none;
         font-weight: bold;
-      }
-      .btn-link:hover {
+        transition: 0.3s;
+    }
+    .btn-link:hover {
         background: #7dd3fc;
-      }
-      </style>
+        transform: translateY(-3px); /* Tombol kayak melayang pas ditekan */
+        box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4);
+    }
+    </style>
+    
       </head>
       <body>
         <div class="card">
