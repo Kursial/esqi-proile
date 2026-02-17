@@ -1,2 +1,2 @@
-# esqi-proile
+# esqi-profile
 lagi belajar aja ini coy
