@@ -7,8 +7,8 @@
     
     <style>
         :root {
-            --bg: linear-gradient(135deg, #0f172a, #1e293b);
-            --card-bg: rgba(30, 41, 59, 0.7);
+            --bg: linear-gradient(135deg, #020617, #0f172a);
+            --card-bg: rgba(30, 41, 59, 0.4);
             --accent: #38bdf8;
             --text: white;
         }
@@ -22,139 +22,145 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            overflow: hidden; /* Biar gak ada scroll aneh */
+            overflow: hidden;
         }
 
-        /* Kartu dengan Efek Kaca (Glassmorphism) */
         .card {
             background: var(--card-bg);
             padding: 40px 20px;
-            border-radius: 24px;
+            border-radius: 30px;
             text-align: center;
             width: 85%;
             max-width: 350px;
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            animation: muncul 1s ease-out; /* Animasi kartu muncul */
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+            animation: muncul 1.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+            z-index: 2;
         }
 
         @keyframes muncul {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
         }
 
-        /* Foto Profil Pro */
         .profile-img {
-            width: 130px;
-            height: 130px;
+            width: 125px;
+            height: 125px;
             border-radius: 50%;
-            border: 4px solid var(--accent);
+            border: 3px solid var(--accent);
             padding: 5px;
             object-fit: cover;
-            transition: 0.5s ease;
-            cursor: pointer;
+            transition: 0.5s;
         }
 
-        .profile-img:hover {
-            transform: scale(1.1) rotate(10deg);
-            box-shadow: 0 0 30px var(--accent);
-        }
+        .profile-img:hover { transform: rotate(360deg); }
 
-        h2 { margin: 20px 0 5px; font-weight: 600; letter-spacing: 1px; }
+        .typing-text { height: 24px; color: var(--accent); margin-bottom: 30px; font-size: 0.9rem; }
 
-        /* Area Teks Ngetik */
-        .typing-text {
-            height: 24px;
-            color: var(--accent);
-            font-weight: 300;
-            margin-bottom: 30px;
-        }
-
-        /* Tombol Modern */
         .btn-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: block;
             background: rgba(255, 255, 255, 0.05);
             color: white;
-            padding: 15px;
-            margin: 12px 0;
+            padding: 14px;
+            margin: 10px 0;
             border-radius: 15px;
             text-decoration: none;
-            font-weight: 400;
-            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
         }
 
         .btn-link:hover {
             background: var(--accent);
-            color: #0f172a;
-            transform: translateX(10px); /* Efek geser kanan */
-            font-weight: 600;
+            color: #020617;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
         }
 
-        /* Hiasan background (Lingkaran Cahaya) */
+        /* Music Player Style */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: #020617;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--accent);
+            z-index: 100;
+            font-size: 20px;
+        }
+
         .blob {
             position: absolute;
-            width: 200px;
-            height: 200px;
+            width: 300px;
+            height: 300px;
             background: var(--accent);
-            filter: blur(80px);
-            z-index: -1;
+            filter: blur(100px);
+            z-index: 1;
             border-radius: 50%;
-            opacity: 0.2;
+            opacity: 0.15;
+            animation: float 6s infinite alternate;
+        }
+
+        @keyframes float {
+            from { transform: translate(0, 0); }
+            to { transform: translate(30px, 50px); }
         }
     </style>
 </head>
 <body>
 
-    <div class="blob" style="top: 10%; left: 10%;"></div>
-    <div class="blob" style="bottom: 10%; right: 10%;"></div>
+    <div class="blob" style="top: -50px; left: -50px;"></div>
+    <div class="blob" style="bottom: -50px; right: -50px; background: #818cf8;"></div>
 
     <div class="card">
         <img src="014ce7a0d4dcdda15c570862f645bfb8.jpg" alt="Esqi" class="profile-img">
-        
-        <h2>Muhammad Esqi Syamsi</h2>
+        <h2>Esqi Syamsi</h2>
         <div class="typing-text" id="ketikan"></div>
         
-        <a href="https://api.whatsapp.com/send?phone=6281946361344" class="btn-link">💬 Jasa Koding</a>
+        <a href="https://wa.me/6281946361344?text=Halo%20Esqi,%20saya%20tertarik%20jasa%20codingnya" class="btn-link">🚀 Tanya Jasa Koding</a>
         <a href="https://instagram.com/eskiikuu" class="btn-link">📸 Instagram</a>
-        <a href="#" class="btn-link" style="border-color: #facc15; color: #facc15;" onclick="alert('Coming Soon, Bro!')">🚀 Portfolio Web</a>
+        <a href="https://github.com/kursial" class="btn-link">💻 GitHub</a>
     </div>
 
+    <div class="music-player" id="musicBtn" onclick="toggleMusic()">🎵</div>
+    <audio id="myAudio" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
-        const teks = ["Mobile Developer", "UI/UX Enthusiast", "Student"];
-        let kataIndex = 0;
-        let hurufIndex = 0;
-        let hapus = false;
+        // Script Ngetik
+        const teks = ["Mobile Web Dev", "UI Designer", "Tech Enthusiast"];
+        let kataIndex = 0, hurufIndex = 0, hapus = false;
 
         function ngetik() {
             const currentKata = teks[kataIndex];
             const display = document.getElementById("ketikan");
+            display.innerText = hapus ? currentKata.substring(0, hurufIndex - 1) : currentKata.substring(0, hurufIndex + 1);
+            hurufIndex = hapus ? hurufIndex - 1 : hurufIndex + 1;
 
-            if (hapus) {
-                display.innerText = currentKata.substring(0, hurufIndex - 1);
-                hurufIndex--;
-            } else {
-                display.innerText = currentKata.substring(0, hurufIndex + 1);
-                hurufIndex++;
-            }
-
-            let speed = 100;
-            if (!hapus && hurufIndex === currentKata.length) {
-                speed = 2000; // Berhenti bentar pas kata selesai
-                hapus = true;
-            } else if (hapus && hurufIndex === 0) {
-                hapus = false;
-                kataIndex = (kataIndex + 1) % teks.length;
-                speed = 500;
-            }
-
+            let speed = hapus ? 50 : 100;
+            if (!hapus && hurufIndex === currentKata.length) { speed = 2000; hapus = true; }
+            else if (hapus && hurufIndex === 0) { hapus = false; kataIndex = (kataIndex + 1) % teks.length; speed = 500; }
             setTimeout(ngetik, speed);
         }
 
-        ngetik();
+        // Script Musik
+        const audio = document.getElementById("myAudio");
+        const btn = document.getElementById("musicBtn");
+        function toggleMusic() {
+            if (audio.paused) { audio.play(); btn.innerText = "⏸️"; btn.style.animation = "none"; }
+            else { audio.pause(); btn.innerText = "🎵"; }
+        }
+
+        window.onload = ngetik;
     </script>
 </body>
 </html>
