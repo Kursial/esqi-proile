@@ -75,11 +75,29 @@
           
           
           <h2>Muhammad Esqi Syamsi</h2>
-          <p>Learning Mobile Web Developer</p>
+          <p id="ketikan"></p>
+          
           <a href="https://api.whatsapp.com/send?phone=6281946361344"
           class="btn-link">Tanya Jasa Koding</a>
           <a href="https://instagram.com/eskiikuu"
           class="btn-link">Cek Portfolio</a>
           </div>
+        <script>
+    const teks = "Learning Mobile Web Developer...";
+    let i = 0;
+    const speed = 100; // Kecepatan ngetik (milidetik)
+
+    function ngetik() {
+        if (i < teks.length) {
+            document.getElementById("ketikan").innerHTML += teks.charAt(i);
+            i++;
+            setTimeout(ngetik, speed);
+        }
+    }
+
+    // Mulai ngetik pas halaman selesai loading
+    window.onload = ngetik;
+        </script>
+        
           </body>
 </html>
